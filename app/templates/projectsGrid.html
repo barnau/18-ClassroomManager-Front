@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-primary">
+			<div class="panel-heading large-panel-heading">
+				<strong>Projects</strong> 
+				<a ui-sref="projects.add"><button class="btn btn-default pull-right" >Add Project</button></a>
+			</div>
+			<div class="panel-body text-center">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="col-md-4">Project Name</th>
+							<th class="col-md-3">Assigned Count</th>
+							<th class="col-md-2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="project in proj.projects"><!-- ng-repeat student in student -->
+							<td class="text-left">{{project.name}}</td>
+							<td>{{project.assignments.length}}</td>
+							<td>
+							<a ui-sref="projects.details({projectId: project.projectId})">
+							<button class="btn btn-sm btn-primary">Edit</button>
+							</a>
+							<button ng-click="proj.deleteStudent(project.projectId)" class="btn btn-sm btn-danger">Delete</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

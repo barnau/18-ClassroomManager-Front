@@ -1,0 +1,30 @@
+<div class="panel panel-info">
+		<div class="panel-heading">
+			Edit Project
+		</div>
+		<div class="panel-body">
+			
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label>Name</label>
+					<input type="text" class="form-control" ng-model="addProj.projectDetails.name" id="email"> 
+				</div>
+			</div>
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label >Description</label>
+					<textarea class="form-control" rows="5" ng-model="addProj.projectDetails.description"></textarea>
+				</div>
+
+				
+
+			</div>
+			<hr>
+			<button class="btn btn-block btn-info" ng-click="addProj.addProject(addProj.projectDetails)">Save Changes</button>
+
+		</div>
+		
+
+		</div>

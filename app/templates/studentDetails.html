@@ -1,0 +1,83 @@
+
+	
+	
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			Assign a project
+		</div>
+		<div class="panel-body">
+			<label for="projectsDropDown">Select a Project</label>
+			<div class="input-group">
+				<select class="form-control" id="projectsDropDown" 
+				ng-options="item.projectId as item.name for item in studDetails.projects" ng-model="studDetails.selectedProject"></select>
+				<span class="input-group-btn">
+				<button class="btn btn-primary" ng-click="studDetails.addAssignment()">Assign</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Assignments
+		</div>
+		<div class="panel-body">
+			<div class="row" ng-repeat="assignment in studDetails.assignments">
+				<div class="col-md-6">
+					<strong>Name</strong>
+					<hr>
+					<p class="text-center">{{assignment.project.name}}</p>
+					<br/>
+				</div>
+				<div class="col-md-6">
+					<strong>Grade</strong>
+					<hr>
+					<p class="text-center">{{assignment.grade}}</p>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Edit Student
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-6">
+					<label for-"firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName" ng-model="studDetails.studentDetail.firstName" placeholder="{{studDetails.studentDetail.firstName}}">
+				</div>
+				<div class="col-md-6">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName" ng-model="studDetails.studentDetail.lastName" placeholder="{{studDetails.studentDetail.lastName}}">
+				</div>
+			</div>
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" ng-model="studDetails.studentDetail.email" id="email" placeholder="{{studDetails.studentDetail.email}}">
+				</div>
+			</div>
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label for="phone">Telephone</label>
+					<input type="text" class="form-control" ng-model="studDetails.studentDetail.telephone" id="phone" placeholder="{{studDetails.studentDetail.telephone}}">
+				</div>
+
+				
+
+			</div>
+			<hr>
+			<button class="btn btn-block btn-primary" ng-click="studDetails.editStudent()">Save Changes</button>
+
+		</div>
+		
+
+		</div>
+	</div>

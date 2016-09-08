@@ -1,0 +1,71 @@
+
+
+<div class="panel panel-success">
+		<div class="panel-heading">
+			Assign a Project
+		</div>
+		<div class="panel-body">
+			<label for="projectsDropDown">Select a Student</label>
+			<div class="input-group">
+				<select class="form-control" id="projectsDropDown" 
+				ng-options="student.studentId as student.lastName + ', ' + student.firstName for student in projDetail.students" ng-model="projDetail.selectedStudent"></select>
+				<span class="input-group-btn">
+				<button class="btn btn-primary" ng-click="projDetail.assignStudent()">Assign</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Assignments
+		</div>
+		<div class="panel-body">
+			<div class="row" ng-repeat="assignment in projDetail.projectDetails.assignments">
+				<div class="col-md-6">
+					<strong>Name</strong>
+					<hr>
+					<p class="text-center">{{assignment.student.firstName}} {{assignment.student.lastName}}</p>
+					<br/>
+				</div>
+				<div class="col-md-6">
+					<strong>Grade</strong>
+					<hr>
+					<p class="text-center">{{assignment.grade}}</p>
+				</div>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			Edit Project
+		</div>
+		<div class="panel-body">
+			
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label>Name</label>
+					<input type="text" class="form-control" ng-model="projDetail.projectDetails.name" id="email" placeholder="{{projDetail.projectDetails.name}}">
+				</div>
+			</div>
+			<div class="row">
+			<hr>
+				<div class="col-md-12">
+					<label >Description</label>
+					<textarea class="form-control" rows="5" ng-model="projDetail.projectDetails.description" placeholder="{{projDetail.projectDetails.description}"></textarea>
+				</div>
+
+				
+
+			</div>
+			<hr>
+			<button class="btn btn-block btn-info" ng-click="projDetail.editProject()">Save Changes</button>
+
+		</div>
+		
+
+		</div>

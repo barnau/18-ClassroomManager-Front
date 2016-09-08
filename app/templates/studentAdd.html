@@ -1,0 +1,34 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Add Student
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+				<label for-"firstName">First Name</label>
+				<input type="text" class="form-control" id="firstName" ng-model="addStud.student.firstName" >
+			</div>
+			<div class="col-md-6">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" id="lastName" ng-model="addStud.student.lastName">
+			</div>
+		</div>
+		<div class="row">
+		<hr>
+			<div class="col-md-12">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" ng-model="addStud.student.email" id="email" >
+			</div>
+		</div>
+		<div class="row">
+		<hr>
+			<div class="col-md-12">
+				<label for="phone">Telephone</label>
+				<input type="text" class="form-control" ng-model="addStud.student.telephone" id="phone" >
+			</div>
+
+		</div>
+		<hr>
+		<button class="btn btn-block btn-primary" ng-click="addStud.addStudent()">Add New Student</button>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-primary">
+			<div class="panel-heading large-panel-heading">
+				<strong>Students</strong> 
+				<a ui-sref="students.add"> <button class="btn btn-default pull-right">Add Student</button></a>
+			</div>
+			<div class="panel-body text-center">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th class="col-md-4">Student Name</th>
+							<th class="col-md-3">Assignment</th>
+							<th class="col-md-2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="student in studs.students"><!-- ng-repeat student in student -->
+							<td class="text-left">{{student.firstName}} {{student.lastName}}</td>
+							<td>{{student.assignments.length}}</td>
+
+							<td>
+							<a ui-sref="students.detail({studentId: student.studentId})">
+							<button class="btn btn-sm btn-primary">Edit</button>
+							</a>
+							
+							<button class="btn btn-sm btn-danger" ng-click="studs.deleteStudent(student.studentId)">Delete</button>
+							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			
+
+		</div>
+	</div>
+</div>
+
+
+
