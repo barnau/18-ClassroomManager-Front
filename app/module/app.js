@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'toastr'])
+        .module('app', ['ui.router', 'toastr', 'ngBootbox'])
 
         .config(function($stateProvider, $urlRouterProvider){
         	$urlRouterProvider.otherwise('/dash');

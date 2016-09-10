@@ -23,17 +23,38 @@
 			Assignments
 		</div>
 		<div class="panel-body">
-			<div class="row" ng-repeat="assignment in studDetails.assignments">
-				<div class="col-md-6">
+			<div class="row" ng-repeat="assignment in studDetails.studentDetail.assignments">
+				<div class="col-md-1">
 					<strong>Name</strong>
 					<hr>
-					<p class="text-center">{{assignment.project.name}}</p>
-					<br/>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-3">				
+					<p class="text-center">{{assignment.project.name}}</p>
+					
+				</div>
+				<div class="col-md-1">
 					<strong>Grade</strong>
 					<hr>
+				</div>
+				<div class="col-md-3">
 					<p class="text-center">{{assignment.grade}}</p>
+				</div>
+				<div class="col-md-4">
+
+					<div class="input-group">
+						<select class="form-control" ng-model="assignment.newGrade"><!-- insert ng-module -->
+							<option value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
+							<option value="F">F</option>
+						</select>
+						<span class="input-group-btn">
+						<button class="btn btn-warning" ng-click="studDetails.changeGrade(assignment)">Change</button>
+						</span>
+					</div>
+
 				</div>
 				<hr>
 			</div>

@@ -30,7 +30,7 @@
     			)
         	}
 
-
+            vm.student = undefined;
         }
 
 

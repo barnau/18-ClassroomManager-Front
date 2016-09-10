@@ -17,6 +17,7 @@
         vm.assignments = [];
         vm.addAssignment = addAssignment;
         vm.editStudent = editStudent;
+        vm.changeGrade = changeGrade;
         
         
 
@@ -50,40 +51,47 @@
         function addAssignment() {
 
             var projId = vm.selectedProject;
-            console.log(projId);
-            var studId = vm.studentDetail.studentId;
-            console.log(studId);
-            var newAssignment = {
-                "studentId" : studId,
-                "projectId" : projId
-            }
-            console.log(newAssignment);
-            
-            AssignmentsFactory.postAssignment(newAssignment).then(
-                function() {
-                    getStudentDetail(vm.studentDetail.studentId);
-                    toastr.success('Assignment was added successfully.', 'Success')
-                },
-                function(error) {
-                    console.log(error);
-                     toastr.error('This project is already assigned to you.', 'Error');
+
+
+            if (projId == undefined) {
+                toastr.error("Please select a Project.")
+            } else {
+
+                var studId = vm.studentDetail.studentId;
+               
+                var newAssignment = {
+                    "studentId" : studId,
+                    "projectId" : projId
                 }
-            );
+               
+                
+                AssignmentsFactory.postAssignment(newAssignment).then(
+                    function() {
+                        getStudentDetail(vm.studentDetail.studentId);
+                        toastr.success('Assignment was added successfully.', 'Success')
+                        getAssignmentsById(vm.studentId);
+                    },
+                    function(error) {
+                       
+                         toastr.error('This project is already assigned to you.', 'Error');
+                    }
+                );
+
+            }
+
+            vm.selectedProject = undefined;
         }
 
         function editStudent() {
             var toEdit = angular.copy(vm.studentDetail);
-            console.log(toEdit);
+            
             var toPut = {
                 "firstName" : toEdit.firstName,
                 "lastName" : toEdit.lastName,
                 "telephone" : toEdit.telephone,
                 "email" : toEdit.email
             }
-            console.log(toPut);
-
-
-            
+          
 
 
             if(toEdit == undefined || toEdit.firstName == undefined || toEdit.lastName == undefined) {
@@ -102,6 +110,25 @@
 
         }
 
+        function changeGrade(assignment) {
+            var editAssignment = angular.copy(assignment);
+           
+
+            editAssignment.grade = assignment.newGrade;
+
+          
+
+            AssignmentsFactory.editAssignment(editAssignment.studentId, editAssignment.projectId, editAssignment).then(
+                 function() {
+                        toastr.success("Changes made", "Success");
+                        getStudentDetail(vm.studentId);
+                        assignment.newGrade = "";
+                    },
+                    function(error) { 
+                        toastr.error(error.statusText);
+                    }
+            );
+        }
 
         getStudentDetail(vm.studentId);
         getProjects();
@@ -109,14 +136,5 @@
 
 
 
-        
-        
-
-        activate();
-
-        ////////////////
-
-        function activate() {
-        }
     }
 })();

@@ -32,25 +32,34 @@
         }
 
         function assignStudent() {
-            var studId = vm.selectedStudent;
-            console.log(studId);
-            var projId = vm.projectId;
 
-            var newAssignment = {
-                "studentId" : studId,
-                "projectId" : projId
-            }
-            console.log(newAssignment);
-            AssignmentsFactory.postAssignment(newAssignment).then(
-                function() {
-                    getProjectDetail(vm.projectId);
-                    toastr.success('Assignment was added successfully.', 'Success')
-                },
-                function(error) {
-                    console.log(error);
-                     toastr.error('This project is already assigned to you.', 'Error');
+            var studId = vm.selectedStudent;
+            
+            if(studId == undefined) {
+                toastr.error('Please select a student.');
+            } else {
+
+               
+                var projId = vm.projectId;
+
+                var newAssignment = {
+                    "studentId" : studId,
+                    "projectId" : projId
                 }
-            );
+                
+                AssignmentsFactory.postAssignment(newAssignment).then(
+                    function() {
+                        getProjectDetail(vm.projectId);
+                        toastr.success('Assignment was added successfully.', 'Success');
+                        getProjectDetail(vm.projectId);
+                    },
+                    function(error) {
+                        
+                         toastr.error('This project is already assigned to you.', 'Error');
+                    }
+                );
+                vm.selectedStudent = undefined;
+            }
         }
 
         

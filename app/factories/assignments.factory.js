@@ -12,7 +12,8 @@
         var service = {
             getAssignments: getAssignments,
             postAssignment: postAssignment,
-            getAssignmentsById: getAssignmentsById
+            getAssignmentsById: getAssignmentsById,
+            editAssignment: editAssignment
 
         };
         return service;
@@ -29,6 +30,10 @@
 
         function postAssignment(assignment) {
             return $http.post('http://localhost:53122/api/Assignments', assignment);
+        }
+
+        function editAssignment(studentId, projectId,  assignment) {
+            return $http.put('http://localhost:53122/api/Assignments/' + studentId  +'/' + projectId ,  assignment);
         }
     }
 })();
